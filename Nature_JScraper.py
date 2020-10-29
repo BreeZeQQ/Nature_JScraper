@@ -15,6 +15,13 @@ def waybackurls():
 	command = "cat "+target_file+" |"+"waybackurls"
 	p1 = subprocess.Popen(command,shell=True,stdout=subprocess.PIPE)
 	output = p1.stdout.read()
+	print("[+] Finding All WayBackUrls")
+	print("[+] All WayBackUrls Found")
+#	file_name = project_name+"_waybackurls"
+#	file = open(file_name, "a")
+#	file.write(output.decode())
+#	file.close()
+#	print("[+] All WayBackUrls Writed To "+file_name)
 	return output
 # -----------------------waybackurls---------------------------
 # -------------------------------------------------------------
@@ -48,11 +55,13 @@ def string_parse( waybackurls_output ):
 
 def download_files( files ):
 
-	pwd = os.getcwd()
 	length = len(files)
+	print("[+] Extracting All JavaScript Files With WayBackUrls")
+	pwd = os.getcwd()
 	for i in range(length):
 		command = "wget "+files[i]+" -P "+pwd+"/"+project_name+"_jsfiles"
 		os.system(command)
+	print("[+] All WayBackUrls JavaScript Files Extracted Successfully")
 
 
 # -----------------------Download JS Files--------------------------
