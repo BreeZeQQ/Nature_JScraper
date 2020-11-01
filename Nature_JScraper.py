@@ -2,6 +2,7 @@ import subprocess
 import sys
 import re
 import os
+import pyfiglet
 
 
 target_file = sys.argv[1] #Getting Subdomains
@@ -10,15 +11,26 @@ command2 = "mkdir "+project_name+"_jsfiles"
 p2 = subprocess.Popen(command2,shell=True,stdout=subprocess.PIPE)
 
 
+def banner():
+
+	out = pyfiglet.figlet_format("Nature_JScraper")
+	print(out)
+	print("                                                                 v0.01")
+	print("                                                                 by br33z3")
+
+
+
+
 # -------------------------------------------------------------
 # -----------------------notify--------------------------------
 
 def notify( msg ):
 
 	# https://medium.com/@ManHay_Hong/how-to-create-a-telegram-bot-and-send-messages-with-python-4cf314d9fa3e
-	token  = "CHANGEME"
-	chatid ="CHANGEME"
+	token  = CHANGEME
+	chatid = CHANGEME
 	command = "curl -s -X POST"+" \"https://api.telegram.org/bot"+token+"/sendMessage?chat_id="+chatid+"&text="+msg+"\""
+	p4 = subprocess.Popen(command,shell=True,stdout=subprocess.PIPE)
 
 # -----------------------notify--------------------------------
 # -------------------------------------------------------------
@@ -140,8 +152,8 @@ def LinkFinder():
 
 
 if __name__ == "__main__":
-
-	print("[+] Finding All WayBackUrls")
+	banner()
+	print("\n\n[+] Finding All WayBackUrls")
 	wbu_output = waybackurls() #Execute WayBackUrls
 	wbu_output_list = Convert(wbu_output.decode()) #Convert String Output to List
 	js_files = string_parse( wbu_output_list ) #Parse List and extract js Files
@@ -149,3 +161,5 @@ if __name__ == "__main__":
 	getJS()
 	LinkFinder()
 	notify("Scan is Over")
+	
+	
