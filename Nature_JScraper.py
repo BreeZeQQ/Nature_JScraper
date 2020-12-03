@@ -142,7 +142,7 @@ def getJS():
 def LinkFinder():
 
 	print("\n[***]Searching For Interesting and Juicy Endpoints,api-keys inside all JavaScript Files")
-	command3 = "python linkfinder.py -i '"+project_name+"_jsfiles/*.js'"+" -o results.html"
+	command3 = "python3 linkfinder.py -i '"+project_name+"_jsfiles/*.js'"+" -o results.html"
 	p3 = subprocess.Popen(command3,shell=True,stdout=subprocess.PIPE)
 	print("[***]Search Done Results Saved to results.html")
 
@@ -160,6 +160,6 @@ if __name__ == "__main__":
 	download_files(js_files)
 	getJS()
 	LinkFinder()
-	notify("Scan is Over")
+	#notify("Scan is Over")
 	
 	
