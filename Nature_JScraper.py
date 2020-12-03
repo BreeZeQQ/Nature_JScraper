@@ -20,7 +20,7 @@ def banner():
 
 
 
-
+	print("Usage: python3 Nature_JScraper.py <file name include domains> <project name>")
 # -------------------------------------------------------------
 # -----------------------notify--------------------------------
 
